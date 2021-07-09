@@ -7,7 +7,7 @@
 {% block body %}
     <h1>Вы попали на главную страницу</h1>
     <h2>Новости</h2>
-   <div style="display: flex; flex-direction: column; width:80%; margin: 0 auto;">
+   <div style="display: flex; flex-direction: column; margin: 0 auto;">
         {% for el in news %}
             <div style="background: linear-gradient(to bottom, rgb(247, 182, 182), rgb(233, 99, 99)) ; padding:2% ;width: 100%; margin-top: 5%;">
             <h1>{{el.title}}</h1>

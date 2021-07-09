@@ -1,27 +1,32 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-Страница про нас
+Турниры
 {% endblock %}
 
 {% block body %}
-    <h1>Отзывы</h1>
-    {% for el in review %}
-        <div style="background: linear-gradient(to bottom, rgb(247, 182, 182), rgb(233, 99, 99)) ; padding:2% ;width: 100%; margin-top: 5%;">
-            <h1>{{el.name}}</h1>
-            <p>{{el.content}}</p>
-            <p>{{el.score}}</p>
-        </div>
-    {% endfor %}    
-    <form method="post" style="margin-top: 5vh;">
-        {% csrf_token %}
-        <label for="name">Имя:</label>
-        {{form.name}}<br>       
-        <label for="content">Содержание:</label>
-        {{form.content}}<br>
-        <label for="score">Оценка:</label>
-        {{form.score}}<br>
-        <button type="submit" class="btn btn-primary">Добавить</button>
-        <span>{{ error }}</span>
-    </form>
+  
+    <h2>Турниры</h2>
+   <div style="display: flex; flex-direction: column; width:80%; margin: 0 auto;">
+        {% for el in tournament %}
+            <div style="background: linear-gradient(to bottom, rgb(247, 182, 182), rgb(233, 99, 99)) ; padding:2% ;width: 100%; margin-top: 5%;">
+            <h1>{{el.title}}</h1>
+            <p>Победитель: {{el.winner}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <h2>Прошедшие игры</h2>
+   <div style="display: flex; flex-direction: column; width:80%; margin: 0 auto;">
+        {% for el in game %}
+            <div style="background: linear-gradient(to bottom, rgb(137, 150, 224), rgb(105, 92, 224)) ; padding:2% ;width: 100%; margin-top: 5%;">
+            
+            <h3>{{el.team1}} : {{el.score1}}</h3>
+            <h3>{{el.team2}} : {{el.score2}}</h3>
+
+            </div>
+        {% endfor %}
+    </div>
+
+    
 {% endblock %}

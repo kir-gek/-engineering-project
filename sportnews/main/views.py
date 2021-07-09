@@ -38,4 +38,5 @@ def review(request):
 
 def tournament(request):
     tournament = Tournament.objects.all()
-    return render(request, 'main/tournament.html', {'tournament': tournament})
+    game = Game.objects.all()
+    return render(request, 'main/tournament.html', {'tournament': tournament, 'game': game})
