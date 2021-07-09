@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.validators import (MinValueValidator, MaxValueValidator)
 
 
 # Create your models here.
@@ -81,6 +82,14 @@ class Tournament(models.Model):
 
 
 
+class Review(models.Model):
+    name = models.CharField(verbose_name='Имя', max_length=50)
+    content = models.TextField(verbose_name='Содержание')
+    score = models.IntegerField(verbose_name='Оценка', validators=[MinValueValidator(1),MaxValueValidator(5)] )
 
+    def __str__(self):
+        return self.name
 
-
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'

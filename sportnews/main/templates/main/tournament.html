@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Страница про нас
+{% endblock %}
+
+{% block body %}
+    <h1>Отзывы</h1>
+    {% for el in review %}
+        <div style="background: linear-gradient(to bottom, rgb(247, 182, 182), rgb(233, 99, 99)) ; padding:2% ;width: 100%; margin-top: 5%;">
+            <h1>{{el.name}}</h1>
+            <p>{{el.content}}</p>
+            <p>{{el.score}}</p>
+        </div>
+    {% endfor %}    
+    <form method="post" style="margin-top: 5vh;">
+        {% csrf_token %}
+        <label for="name">Имя:</label>
+        {{form.name}}<br>       
+        <label for="content">Содержание:</label>
+        {{form.content}}<br>
+        <label for="score">Оценка:</label>
+        {{form.score}}<br>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}
