@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import News, Category, Team, Game, Tournament
 
 # Create your views here.
+
 def index(request):
-    return render(request, 'main/index.html')
+    news = News.objects.all()
+    return render(request, 'main/index.html', {'news':news})
 
 # def about(request):
 #     return HttpResponse("<h4>About</h4>") 
